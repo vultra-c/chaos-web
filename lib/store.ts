@@ -72,6 +72,16 @@ export const CDN_PRESETS: Record<string, { label: string; hint: string; build: (
     hint: "第三方镜像，国内部分地区更快",
     build: (repo, branch) => `https://jsd.onmicrosoft.cn/gh/${repo}@${branch}`,
   },
+  kgithub: {
+    label: "KGithub（国内镜像）",
+    hint: "raw.githubusercontent 的国内镜像，适合国内用户",
+    build: (repo, branch) => `https://raw.kgithub.com/${repo}/${branch}`,
+  },
+  ghproxy: {
+    label: "GHProxy（国内镜像）",
+    hint: "GitHub 文件加速代理，国内访问较稳",
+    build: (repo, branch) => `https://ghproxy.net/https://raw.githubusercontent.com/${repo}/${branch}`,
+  },
   github: {
     label: "GitHub Raw",
     hint: "官方源站，一定最新但国内常被限速",
