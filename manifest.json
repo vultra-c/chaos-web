@@ -1,17 +1,17 @@
 {
-  "cdn": "github",
+  "cdn": "site",
   "cdnBase": "",
-  "mirror": true,
+  "mirror": false,
   "apk": {
-    "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_app-r.apk",
+    "file": "releases/chaos-bandpack-v1.0.0.apk",
     "version": "v1.0.0",
     "size": "14.38 MB",
     "note": "最新稳定版"
   },
   "assets": [
     {
-      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-lxgw.bin",
-      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-lxgw.bin",
+      "key": "chaos-fontpack-lxgw.bin",
+      "file": "releases/chaos-fontpack-lxgw.bin",
       "name": "Chaos Fontpack · LXGW",
       "type": "字体投递包",
       "size": "3.54 MB",
@@ -21,8 +21,8 @@
       "hidden": false
     },
     {
-      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-好身体.bin",
-      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-好身体.bin",
+      "key": "chaos-fontpack-haoshenti.bin",
+      "file": "releases/chaos-fontpack-haoshenti.bin",
       "name": "Chaos Fontpack · 好身体",
       "type": "字体投递包",
       "size": "3.07 MB",
@@ -32,8 +32,8 @@
       "hidden": false
     },
     {
-      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Delta.bin",
-      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Delta.bin",
+      "key": "chaos-iconpack-delta.bin",
+      "file": "releases/chaos-iconpack-delta.bin",
       "name": "Chaos Iconpack · Delta",
       "type": "图标投递包",
       "size": "1.97 MB",
@@ -43,8 +43,8 @@
       "hidden": false
     },
     {
-      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Pure.bin",
-      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Pure.bin",
+      "key": "chaos-iconpack-pure.bin",
+      "file": "releases/chaos-iconpack-pure.bin",
       "name": "Chaos Iconpack · Pure",
       "type": "图标投递包",
       "size": "1.83 MB",
