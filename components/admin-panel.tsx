@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { commitFiles, readAsBase64 } from "../lib/github-client"
-import { CDN_PRESETS, safeName, type StoreAsset, type StoreManifest } from "../lib/store"
+import { CDN_PRESETS, safeName, type StoreAsset, type StoreManifest } from "../lib/store-shared"
 
 const TONES = ["blue", "yellow", "violet", "green", "pink", "cyan"]
 const TYPES = ["字体投递包", "图标投递包", "资源包", "安装包", "其他"]

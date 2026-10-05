@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { ArrowDownToLine, ArrowUpRight, Check, ChevronRight, Github, Menu, ShieldCheck, Sparkles, X } from "lucide-react"
-import type { StoreManifest } from "../lib/store"
+import type { StoreManifest } from "../lib/store-shared"
 
 const repoUrl = "https://github.com/WenHuaYiYang/chaos-bandpack"
 const moduleUrl = "https://github.com/WenHuaYiYang/Chaos-Module"

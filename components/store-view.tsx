@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react"
 import { ArrowDownToLine, ArrowLeft, ArrowUpRight, Check, Package, Search } from "lucide-react"
-import { CDN_PRESETS, cdnBase, fileUrl, mirrorUrl, type StoreManifest } from "../lib/store"
+import { CDN_PRESETS, cdnBase, fileUrl, mirrorUrl, type StoreManifest } from "../lib/store-shared"
 
 export default function StoreView({ manifest }: { manifest: StoreManifest }) {
   const [query, setQuery] = useState("")

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import AdminPanel from "./admin-panel"
-import type { StoreManifest } from "../lib/store"
+import type { StoreManifest } from "../lib/store-shared"
 
 export default function AdminLogin({ manifest, repo, branch, canUpload }: {
   manifest: StoreManifest
