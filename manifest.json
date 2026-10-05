@@ -1,0 +1,57 @@
+{
+  "cdn": "github",
+  "cdnBase": "",
+  "mirror": true,
+  "apk": {
+    "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_app-r.apk",
+    "version": "v1.0.0",
+    "size": "14.38 MB",
+    "note": "最新稳定版"
+  },
+  "assets": [
+    {
+      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-lxgw.bin",
+      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-lxgw.bin",
+      "name": "Chaos Fontpack · LXGW",
+      "type": "字体投递包",
+      "size": "3.54 MB",
+      "tone": "blue",
+      "order": 1,
+      "note": "",
+      "hidden": false
+    },
+    {
+      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-好身体.bin",
+      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-fontpack-好身体.bin",
+      "name": "Chaos Fontpack · 好身体",
+      "type": "字体投递包",
+      "size": "3.07 MB",
+      "tone": "yellow",
+      "order": 2,
+      "note": "",
+      "hidden": false
+    },
+    {
+      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Delta.bin",
+      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Delta.bin",
+      "name": "Chaos Iconpack · Delta",
+      "type": "图标投递包",
+      "size": "1.97 MB",
+      "tone": "violet",
+      "order": 3,
+      "note": "",
+      "hidden": false
+    },
+    {
+      "key": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Pure.bin",
+      "file": "658b9b0bb8a1dbb60ecf0902012888d3_4080889121206691547_m_chaos-iconpack-Pure.bin",
+      "name": "Chaos Iconpack · Pure",
+      "type": "图标投递包",
+      "size": "1.83 MB",
+      "tone": "green",
+      "order": 4,
+      "note": "",
+      "hidden": false
+    }
+  ]
+}
