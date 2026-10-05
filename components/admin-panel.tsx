@@ -90,7 +90,7 @@ export default function AdminPanel({ manifest: initial, info }: { manifest: Stor
     const base = safeName(upload.name || file.name.replace(/\.[^.]+$/, "")) || safeName(file.name)
     const ext = file.name.includes(".") ? file.name.slice(file.name.lastIndexOf(".")) : ""
     const filename = `${base}${ext.toLowerCase()}`
-    const path = filename
+    const path = `releases/${filename}`
     const content = await readAsBase64(file)
     const asset: StoreAsset = {
       key: filename,

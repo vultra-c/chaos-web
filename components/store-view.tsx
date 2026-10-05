@@ -38,7 +38,7 @@ export default function StoreView({ manifest }: { manifest: StoreManifest }) {
       <h1>资源商店</h1>
       <p>下载 Chaos 制作台与字体、图标投递包。全部开源，无追踪，无广告。</p>
       <div className="store-meta">
-        <span><Check /> {CDN_PRESETS[manifest.cdn]?.label || "GitHub 直链"}</span>
+        <span><Check /> {CDN_PRESETS[manifest.cdn]?.label || "本站直链"}</span>
         <span><Package /> {visible.length} 个资源包</span>
       </div>
     </header>

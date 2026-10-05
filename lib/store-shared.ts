@@ -57,6 +57,11 @@ export function safeName(name: string): string {
 }
 
 export const CDN_PRESETS: Record<string, { label: string; hint: string; build: (repo: string, branch: string) => string }> = {
+  site: {
+    label: "本站直链（推荐）",
+    hint: "文件随站点一同部署，同源下载，最稳定",
+    build: () => "",
+  },
   github: {
     label: "GitHub 直链（默认）",
     hint: "github.com 原始地址，最稳，国内部分地区可能被限速",
@@ -91,8 +96,9 @@ export const CDN_PRESETS: Record<string, { label: string; hint: string; build: (
 
 export function cdnBase(manifest: StoreManifest): string {
   if (manifest.cdn === "custom") return (manifest.cdnBase || "").replace(/\/+$/, "")
+  if (manifest.cdn === "site") return ""
   const preset = CDN_PRESETS[manifest.cdn]
-  return preset ? preset.build(STORE_REPO, STORE_BRANCH) : CDN_PRESETS.github.build(STORE_REPO, STORE_BRANCH)
+  return preset ? preset.build(STORE_REPO, STORE_BRANCH) : CDN_PRESETS.site.build(STORE_REPO, STORE_BRANCH)
 }
 
 export function fileUrl(manifest: StoreManifest, file: string): string {
@@ -100,18 +106,18 @@ export function fileUrl(manifest: StoreManifest, file: string): string {
 }
 
 /** 备用镜像：主用 CDN 之外再给一条不同线路，主线路慢时用户可以手动切换 */
+/** 备用镜像：主用线路之外再给一条外部线路，仅在主线路失败时手动切换 */
 export function mirrorUrl(manifest: StoreManifest, file: string): string {
+  if (manifest.cdn === "custom") return ""
   const backup = manifest.cdn === "github" ? "jsdelivr" : "github"
   const preset = CDN_PRESETS[backup]
   return `${preset.build(STORE_REPO, STORE_BRANCH)}/${file}`
 }
 
-
-
 export const EMPTY_MANIFEST: StoreManifest = {
-  cdn: "github",
+  cdn: "site",
   cdnBase: "",
-  mirror: true,
+  mirror: false,
   apk: { file: "", version: "v1.0.0", size: "", note: "" },
   assets: [],
 }
@@ -134,7 +140,7 @@ export function normalize(input: any): StoreManifest {
         .sort((a: StoreAsset, b: StoreAsset) => a.order - b.order)
     : []
   return {
-    cdn: CDN_PRESETS[input?.cdn] ? input.cdn : "github",
+    cdn: CDN_PRESETS[input?.cdn] ? input.cdn : "site",
     cdnBase: String(input?.cdnBase || ""),
     mirror: input?.mirror !== false,
     apk: {
