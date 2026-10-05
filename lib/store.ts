@@ -44,7 +44,7 @@ export interface StoreManifest {
   assets: StoreAsset[]
 }
 
-export const STORE_REPO = process.env.STORE_REPO || "vultra-c/chaos-store"
+export const STORE_REPO = process.env.STORE_REPO || "vultra-c/chaos-web"
 export const STORE_BRANCH = process.env.STORE_BRANCH || "main"
 
 /** 文件名里合法字符之外的字符会被替换，避免 URL 出错 */
@@ -57,39 +57,34 @@ export function safeName(name: string): string {
 }
 
 export const CDN_PRESETS: Record<string, { label: string; hint: string; build: (repo: string, branch: string) => string }> = {
+  github: {
+    label: "GitHub 直链（默认）",
+    hint: "github.com 原始地址，最稳，国内部分地区可能被限速",
+    build: (repo, branch) => `https://github.com/${repo}/raw/refs/heads/${branch}`,
+  },
+  raw: {
+    label: "GitHub Raw",
+    hint: "raw.githubusercontent.com，与直链同源",
+    build: (repo, branch) => `https://raw.githubusercontent.com/${repo}/${branch}`,
+  },
   jsdelivr: {
-    label: "jsDelivr（推荐）",
-    hint: "全球 CDN，国内大部分地区可用",
+    label: "jsDelivr CDN",
+    hint: "全球 CDN，国内大部分地区可用，偶发 502",
     build: (repo, branch) => `https://cdn.jsdelivr.net/gh/${repo}@${branch}`,
-  },
-  fastly: {
-    label: "jsDelivr · Fastly",
-    hint: "jsDelivr 的 Fastly 线路，可作为备选",
-    build: (repo, branch) => `https://fastly.jsdelivr.net/gh/${repo}@${branch}`,
-  },
-  jsd: {
-    label: "jsDelivr · 国内镜像",
-    hint: "第三方镜像，国内部分地区更快",
-    build: (repo, branch) => `https://jsd.onmicrosoft.cn/gh/${repo}@${branch}`,
   },
   kgithub: {
     label: "KGithub（国内镜像）",
-    hint: "raw.githubusercontent 的国内镜像，适合国内用户",
+    hint: "GitHub 文件的国内镜像",
     build: (repo, branch) => `https://raw.kgithub.com/${repo}/${branch}`,
   },
   ghproxy: {
     label: "GHProxy（国内镜像）",
-    hint: "GitHub 文件加速代理，国内访问较稳",
+    hint: "GitHub 文件加速代理",
     build: (repo, branch) => `https://ghproxy.net/https://raw.githubusercontent.com/${repo}/${branch}`,
-  },
-  github: {
-    label: "GitHub Raw",
-    hint: "官方源站，一定最新但国内常被限速",
-    build: (repo, branch) => `https://raw.githubusercontent.com/${repo}/${branch}`,
   },
   custom: {
     label: "自定义域名",
-    hint: "填你自己的对象存储 / R2 / CDN 前缀",
+    hint: "填你自己的对象存储 / CDN 前缀",
     build: () => "",
   },
 }
@@ -97,7 +92,7 @@ export const CDN_PRESETS: Record<string, { label: string; hint: string; build: (
 export function cdnBase(manifest: StoreManifest): string {
   if (manifest.cdn === "custom") return (manifest.cdnBase || "").replace(/\/+$/, "")
   const preset = CDN_PRESETS[manifest.cdn]
-  return preset ? preset.build(STORE_REPO, STORE_BRANCH) : CDN_PRESETS.jsdelivr.build(STORE_REPO, STORE_BRANCH)
+  return preset ? preset.build(STORE_REPO, STORE_BRANCH) : CDN_PRESETS.github.build(STORE_REPO, STORE_BRANCH)
 }
 
 export function fileUrl(manifest: StoreManifest, file: string): string {
@@ -112,7 +107,7 @@ export function mirrorUrl(manifest: StoreManifest, file: string): string {
 }
 
 export const EMPTY_MANIFEST: StoreManifest = {
-  cdn: "jsdelivr",
+  cdn: "github",
   cdnBase: "",
   mirror: true,
   apk: { file: "", version: "v1.0.0", size: "", note: "" },
@@ -137,7 +132,7 @@ function normalize(input: any): StoreManifest {
         .sort((a: StoreAsset, b: StoreAsset) => a.order - b.order)
     : []
   return {
-    cdn: CDN_PRESETS[input?.cdn] ? input.cdn : "jsdelivr",
+    cdn: CDN_PRESETS[input?.cdn] ? input.cdn : "github",
     cdnBase: String(input?.cdnBase || ""),
     mirror: input?.mirror !== false,
     apk: {

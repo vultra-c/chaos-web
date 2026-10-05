@@ -6,13 +6,12 @@ Chaos 官网 —— 小米手环 10 Pro 投递包制作台（Chaos Bandpack）�
 - Android 制作台源码：<https://github.com/WenHuaYiYang/chaos-bandpack>
 - 设备侧模块：<https://github.com/WenHuaYiYang/Chaos-Module>
 
-## 架构：主站不放大文件
+## 架构：下载走 GitHub 直链
 
-官网仓库（本仓库）只放页面代码，**不存放任何 APK 或资源包**。
-所有下载文件都在独立仓库 [`vultra-c/chaos-store`](https://github.com/vultra-c/chaos-store)，
-通过 CDN 分发。网站读取该仓库的 `manifest.json` 渲染下载列表。
+下载文件放在本仓库根目录，链接直指 `github.com/vultra-c/chaos-web/raw/refs/heads/main/<文件名>`，
+与站点部署解耦。网站读取仓库根目录的 `manifest.json` 渲染下载列表。
 
-这样做的好处：主站体积小、部署快；下载走 CDN，与站点域名解耦，换线路不用改代码。
+后台可切换下载线路：GitHub 直链（默认）、GitHub Raw、jsDelivr、KGithub、GHProxy、自定义域名。
 
 ## 管理后台
 
